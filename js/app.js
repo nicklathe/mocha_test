@@ -8,13 +8,16 @@ var Person = exports.Person = function(name, age) {
     this.age = age;
 };
 
-//another way is like this:
+// or like this
+exports.sayHello = function(name) {
+    return 'Hello ' + name;
+}
+
+// another way is like this (declare the functions, then export them below):
 var foo = 'bar';
 
 function arrayLength (array) {
     return array.length;
 }
-
-// functions and variables exported here:
 module.exports.foo = foo;
 module.exports.arrayLength = arrayLength;

@@ -1,12 +1,6 @@
 var expect = require('chai').expect;
 var should = require('chai').should();
 
-describe('A basic test', function() {
-    it('should pass when everything is ok', function() {
-        expect(true).to.be.true;
-    })
-})
-
 var foo = require('../js/app.js').foo;
 describe('foo', function() {
     //using should
@@ -16,6 +10,9 @@ describe('foo', function() {
     //using expect
     it('should be a string', function() {
         expect('foo').to.be.a('string');
+    })
+    it('should return length of foo', function() {
+        expect('foo').to.have.length(3);
     })
 })
 
@@ -44,5 +41,18 @@ describe('arrayLength', function() {
         //using expect
         var testArray = arrayLength([1,2,3,4]);
         expect(testArray).to.equal(4);
+    })
+})
+
+// you can also bring them in this way, instead of tagging the function on the end of the require statement.
+// this would allow you to require app.js once at the top, and just do app.functionName. Probably a better way to do it.
+
+var app = require('../js/app.js');
+describe('sayHello', function() {
+    it('should say hello to a name given it', function() {
+        expect(app.sayHello('Nick')).to.equal('Hello Nick');
+    })
+    it('should be a string', function() {
+        expect(app.sayHello('Fred')).to.be.a('string');
     })
 })
